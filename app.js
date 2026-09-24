@@ -22,9 +22,10 @@ function imgTag(local, unsplashId, seed, alt, w){
 document.addEventListener('error', e => {
   const t = e.target;
   if (t.tagName !== 'IMG' || t.dataset.done) return;
-  if (t.src.includes('images/') && t.dataset.online) { t.src = t.dataset.online; return; }
-  t.dataset.done = '1';
   const w = Number(t.dataset.w || 700);
+  const online = t.dataset.online || (t.dataset.u ? U(t.dataset.u).replace('w=700', 'w=' + w) : null);
+  if (/images\//.test(t.src) && online) { t.src = online; return; }
+  t.dataset.done = '1';
   t.src = `https://picsum.photos/seed/${t.dataset.seed || 'luxewigs'}/${w}/${Math.round(w*1.25)}`;
 }, true);
 
@@ -43,7 +44,7 @@ const PRODUCTS = [
   {slug:'p-choco-highlight', name:'Choco Highlight Body Wave',     cats:['bundles','best-sellers'],     price:70000,               u:'photo-1560066984-138dadb4c035'},
   {slug:'p-auburn-fire',     name:'Auburn Fire Bussdown',          cats:['flash-sale','frontals'],      price:64000, old:72000, tag:'sale', u:'photo-1595959183082-7b570b7e08e2'},
   {slug:'p-honey-brown',     name:'Honey Brown Layered Frontal',   cats:['blonde','best-sellers'],      price:75000,               u:'photo-1616683693504-3ea7e9ad6fec'},
-  {slug:'p-natural-fro',     name:'Natural Girl Fro (Xtra Volume)',cats:['bundles','flash-sale'],       price:48500, old:55000, tag:'sale', u:'photo-1522338242992-e1a54906a8da'},
+  {slug:'p-natural-fro',     name:'Silky Body Wave (High Density)',  cats:['bundles','flash-sale'],       price:48500, old:55000, tag:'sale', u:'photo-1522338242992-e1a54906a8da'},
   {slug:'p-wine-replica',    name:'Wine Donor Replica',            cats:['new-arrivals','closures'],    price:70000,               u:'photo-1524504388940-b1c1722653e1'},
 ];
 

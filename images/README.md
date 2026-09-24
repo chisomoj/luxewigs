@@ -1,4 +1,9 @@
-# How to use your own Pinterest photos on luxewigs
+# luxewigs photos — already included ✓
+
+All 27 photo slots on the site are filled with real Pinterest wig photos
+(saved locally in this folder, so they always load — no hotlinking).
+
+## Swap in your own Pinterest photos anytime
 
 Pinterest blocks other websites from hotlinking its photos, so the site
 can't pull them in automatically. Instead, every photo on the site first
